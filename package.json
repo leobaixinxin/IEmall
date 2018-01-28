@@ -1,0 +1,31 @@
+{
+  "name": "iemall-fe",
+  "version": "1.0.0",
+  "description": "iemall前端代码",
+  "main": "index.js",
+  "scripts": {
+    "dev": "WEBPACK_ENV=dev webpack-dev-server --inline --port 8088",
+    "dist": "WEBPACK_ENV=online webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leobaixinxin/IEmall-fe.git"
+  },
+  "author": "leobaixinxin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leobaixinxin/IEmall-fe/issues"
+  },
+  "homepage": "https://github.com/leobaixinxin/IEmall-fe#readme",
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5"
+  },
+  "dependencies": {}
+}
