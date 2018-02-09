@@ -2,7 +2,7 @@
  * @Author: leobaixinxin 
  * @Date: 2018-01-18 22:46:36 
  * @Last Modified by: leobaixinxin
- * @Last Modified time: 2018-01-28 10:54:43
+ * @Last Modified time: 2018-02-09 21:13:28
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -29,11 +29,11 @@ var config = {
     entry:{
         'vender':['jquery'],
         'base':['./src/page/common/index.js',
-        './src/page/common/common.js',
         './src/page/module.js'
         ],
         'index':['./src/page/index/index.js'],
-        'login':['./src/page/login/index.js']
+        'login':['./src/page/login/index.js'],
+        'result':['./src/page/result/index.js'],
     },
     output:{
         path:'./dist',
@@ -41,7 +41,7 @@ var config = {
         publicPath:'/dist'
     },
     externals:{
-        'jquery':'window.jQuery'
+        'jquery':'jQuery'
     },
     module:{
         loaders:[
@@ -54,9 +54,22 @@ var config = {
                 test:   /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
                 // exclude: /node_modules|bootstrap/,
                 loader: "url-loader?limit=200&name=resource/[name].[ext]",
+            },{
+                test:   /\.string$/,
+                // exclude: /node_modules|bootstrap/,
+                loader: "html-loader"
             }
         ]
 
+    },
+    resolve:{
+        alias:{
+            util : __dirname + '/src/util',
+            page : __dirname + '/src/page',
+            service : __dirname + '/src/service',
+            image : __dirname + '/src/image',
+            node_modules : __dirname + '/node_modules',
+        }
     },
     plugins:[
 
@@ -71,7 +84,8 @@ var config = {
 
         // html模版的处理
         new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
-        new HtmlWebpackPlugin(getHtmlConfig('login','登陆')),
+        new HtmlWebpackPlugin(getHtmlConfig('login','用户登陆')),
+        new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
     ]
 };
 if('dev' === WEBPACK_ENV){
